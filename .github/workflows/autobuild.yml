@@ -1,0 +1,33 @@
+name: autobuild
+
+on: pull_request
+
+jobs:
+  autobuild:
+    # Check if the PR is not raised by this workflow and is not from a fork
+    if: startsWith(github.head_ref, 'autobuild') == false && startsWith(github.head_ref, 'dependabot') == true && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm i
+        env:
+          CI: true
+      - name: Run test build
+        run: npm run build
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "chore(build): build assets"
+          title: "chore(build): build assets"
+          body: This is an auto-generated PR to build assets changed by Dependabot.
+          labels: dependencies
+          branch: "autobuild/${{ github.head_ref }}"
