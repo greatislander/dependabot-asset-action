@@ -43,6 +43,6 @@ jobs:
         if: ${{ steps.cpr.outputs.pull-request-number }}
         uses: "pascalgn/automerge-action@v0.15.2"
         env:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-          merge_labels: automerge
-          pull_request: "${{ steps.cpr.outputs.pull-request-number }}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: automerge
+          PULL_REQUEST: "${{ steps.cpr.outputs.pull-request-number }}"
