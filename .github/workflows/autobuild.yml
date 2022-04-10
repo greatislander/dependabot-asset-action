@@ -38,7 +38,7 @@ jobs:
           body: This is an auto-generated PR to build assets changed by Dependabot.
           labels: dependencies, automerge
           branch: "autobuild/${{ github.head_ref }}"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CREATE_PULL_REQUEST_TOKEN }}
       - name: Automerge built dependencies
         if: ${{ steps.cpr.outputs.pull-request-number }}
         uses: "pascalgn/automerge-action@v0.15.2"
