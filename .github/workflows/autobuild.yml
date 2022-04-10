@@ -38,6 +38,8 @@ jobs:
           body: This is an auto-generated PR to build assets changed by Dependabot.
           labels: dependencies, automerge
           branch: "autobuild/${{ github.head_ref }}"
+          committer: "Ned Zimmerman <ned@bight.dev>"
+          author: "Ned Zimmerman <ned@bight.dev>"
       - name: Automerge built dependencies
         if: ${{ steps.cpr.outputs.pull-request-number }}
         uses: "pascalgn/automerge-action@v0.15.2"
