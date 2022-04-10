@@ -1,0 +1,26 @@
+{
+  "name": "dependabot-asset-action",
+  "version": "1.0.0",
+  "description": "Test for building assets on Dependabot PRs.",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/index.scss dist/index.css --no-source-map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greatislander/dependabot-asset-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/greatislander/dependabot-asset-action/issues"
+  },
+  "homepage": "https://github.com/greatislander/dependabot-asset-action#readme",
+  "devDependencies": {
+    "sass": "^1.50.0"
+  },
+  "dependencies": {
+    "modern-css-reset": "^1.0"
+  }
+}
