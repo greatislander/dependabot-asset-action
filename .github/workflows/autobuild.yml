@@ -29,5 +29,9 @@ jobs:
           commit-message: "chore(build): build assets"
           title: "chore(build): build assets"
           body: This is an auto-generated PR to build assets changed by Dependabot.
-          labels: dependencies
+          labels: dependencies, automerge
           branch: "autobuild/${{ github.head_ref }}"
+      - name: Automerge built dependencies
+        uses: "pascalgn/automerge-action@v0.15.2"
+        env:
+          MERGE_LABELS: automerge
