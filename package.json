@@ -21,6 +21,6 @@
     "sass": "^1.50.0"
   },
   "dependencies": {
-    "modern-css-reset": "^1.4"
+    "modern-css-reset": "1.0.4"
   }
 }
