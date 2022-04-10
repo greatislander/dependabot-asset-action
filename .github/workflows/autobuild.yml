@@ -30,6 +30,7 @@ jobs:
       - name: Run test build
         run: npm run build
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "chore(build): build assets"
@@ -38,7 +39,9 @@ jobs:
           labels: dependencies, automerge
           branch: "autobuild/${{ github.head_ref }}"
       - name: Automerge built dependencies
+        if: ${{ steps.cpr.outputs.pull-request-number }}
         uses: "pascalgn/automerge-action@v0.15.2"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: automerge
+          PULL_REQUEST: "${{ steps.cpr.outputs.pull-request-number }}"
