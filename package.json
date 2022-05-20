@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/greatislander/dependabot-asset-action#readme",
   "devDependencies": {
-    "sass": "^1.50.1"
+    "sass": "^1.52.0"
   },
   "dependencies": {
     "modern-css-reset": "1.4.0"
